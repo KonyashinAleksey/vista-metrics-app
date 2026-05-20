@@ -81,6 +81,7 @@ function buildSnapshot(
   unit: MetricSnapshot["unit"],
   daily: number[],
   planTarget: number,
+  displayUnit?: string,
 ): MetricSnapshot {
   const lastIdx = daily.length - 1;
   const yesterday = daily[lastIdx];
@@ -110,6 +111,7 @@ function buildSnapshot(
   return {
     label,
     unit,
+    displayUnit,
     yesterday,
     dodChangePct: pct(yesterday, prev),
     mtd,
