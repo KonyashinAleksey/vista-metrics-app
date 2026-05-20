@@ -13,6 +13,7 @@ export type DailyPoint = {
 export type MetricSnapshot = {
   label: string;
   unit: "currency" | "number" | "percent";
+  displayUnit?: string;
   yesterday: number;
   dodChangePct: number; // vs prior day
   mtd: number;
