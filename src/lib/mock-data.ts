@@ -127,7 +127,7 @@ function buildSnapshot(
 
 export const metrics = {
   revenue: buildSnapshot(
-    "Чистый комиссионный доход",
+    "КД без НДС",
     "currency",
     dailySeries.map((d) => d.revenue),
     32_000_000,
