@@ -147,6 +147,12 @@ export const metrics = {
     dailySeries.map((d) => d.penetration),
     0.42,
   ),
+  products: buildSnapshot(
+    "Кол-во товаров",
+    "number",
+    productsDaily,
+    31_000_000,
+  ),
 };
 
 // Full month projection (plan + forecast) for the headline chart
