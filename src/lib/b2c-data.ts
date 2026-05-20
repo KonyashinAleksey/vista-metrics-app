@@ -9,7 +9,7 @@ export type B2CKpi = {
 };
 
 export type B2CRrTile = {
-  label: "MTD" | "YTD";
+  label: string;
   value: string;
   unit: string;
   deltaPct: number;
