@@ -1,156 +1,136 @@
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
-import { b2c, type B2CProduct, type B2CRRCard, type B2CTopCard } from "@/lib/b2c-data";
+import { ArrowDownRight, ArrowUpRight, Minus } from "lucide-react";
+import { b2c, type B2CKpi, type B2CProduct, type B2CRrTile, type B2CSegmentCard } from "@/lib/b2c-data";
+import { formatPct, toneFromChange } from "@/lib/format";
 import { B2CSalesTrend } from "./B2CSalesTrend";
 
-function toneFromPct(pct: number) {
-  if (pct >= 90) return "high" as const;
-  if (pct >= 45) return "mid" as const;
-  return "low" as const;
+function deltaPill(deltaPct: number) {
+  const tone = toneFromChange(deltaPct);
+  const Icon = tone === "positive" ? ArrowUpRight : tone === "negative" ? ArrowDownRight : Minus;
+  const cls =
+    tone === "negative"
+      ? "bg-danger/10 text-danger"
+      : tone === "positive"
+        ? "bg-success/10 text-success"
+        : "bg-muted text-muted-foreground";
+  return { Icon, cls };
 }
-
-const toneText: Record<"low" | "mid" | "high", string> = {
-  low: "text-danger",
-  mid: "text-warning",
-  high: "text-success",
-};
-
-const toneBg: Record<"low" | "mid" | "high", string> = {
-  low: "bg-danger/10 text-danger",
-  mid: "bg-warning/15 text-warning",
-  high: "bg-success/10 text-success",
-};
-
-const toneBar: Record<"low" | "mid" | "high", string> = {
-  low: "bg-danger",
-  mid: "bg-warning",
-  high: "bg-success",
-};
 
 export function B2CInsurance() {
   return (
-    <section className="flex flex-col gap-2">
+    <section className="flex flex-col gap-3">
       <header className="flex items-end justify-between">
         <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
           Страховые продукты · B2C
         </h2>
       </header>
 
+      {/* KPI headline — like B2B HeadlineKpi */}
+      <section className="rounded-2xl border bg-card p-4">
+        <div className="grid grid-cols-2 gap-4">
+          {b2c.kpis.map((k) => (
+            <KpiBlock key={k.title} kpi={k} />
+          ))}
+        </div>
+      </section>
+
+      {/* RR ЧКД — like B2B RunRateCard */}
+      <section className="flex flex-col">
+        <div className="mb-1.5">
+          <h3 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            {b2c.rr.title}
+          </h3>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {b2c.rr.tiles.map((t) => (
+            <RrTile key={t.label} tile={t} />
+          ))}
+        </div>
+      </section>
+
+      {/* Сегменты продаж */}
       <div className="grid grid-cols-2 gap-2">
-        {b2c.topCards.map((c) => (
-          <TopCard key={c.title} card={c} />
+        {b2c.segments.map((s) => (
+          <SegmentCard key={s.title} card={s} />
         ))}
       </div>
 
-      <div className="grid grid-cols-2 gap-2">
-        {b2c.rrCards.map((c) => (
-          <RRCard key={c.title} card={c} />
-        ))}
-      </div>
-
+      {/* ТОП-5 продуктов */}
       <ProductsCard products={b2c.topProducts} />
 
+      {/* График продаж */}
       <B2CSalesTrend />
     </section>
   );
 }
 
-function TopCard({ card }: { card: B2CTopCard }) {
+function KpiBlock({ kpi }: { kpi: B2CKpi }) {
+  const { Icon, cls } = deltaPill(kpi.deltaPct);
   return (
-    <div className="rounded-2xl border bg-card p-2.5">
-      <div className="flex items-start justify-between border-b hairline pb-1.5">
-        <div className="min-w-0">
-          <div className="text-[9px] font-semibold uppercase tracking-[0.1em] text-ink">
-            {card.title}
-          </div>
-          <div className="text-[8.5px] font-medium uppercase tracking-[0.06em] text-muted-foreground mt-0.5">
-            {card.unitLabel}
-          </div>
-        </div>
-        <div className="text-right shrink-0">
-          <div className="text-[8.5px] font-medium uppercase tracking-[0.06em] text-muted-foreground">
-            Бенчмарк/день
-          </div>
-          <div className="text-[11px] font-semibold tabular text-ink/70">
-            {card.benchmark}
-          </div>
-        </div>
+    <div>
+      <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+        <span className="h-1 w-1 rounded-full bg-ink" />
+        <span className="truncate">{kpi.title}</span>
       </div>
-
-      <div className="mt-2 grid grid-cols-2 gap-2">
-        <Cell label="Вчера" value={card.yesterday} delta={card.yesterdayDelta} />
-        <Cell label="Ср. 10д" value={card.avg10} delta={card.avg10Delta} />
+      <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline gap-1.5">
+        <span className="text-[32px]">{kpi.value}</span>
+        <span className="text-base text-muted-foreground">{kpi.unit}</span>
+      </h1>
+      <div className="mt-1.5 flex items-center gap-2 text-[11px] text-muted-foreground">
+        <span
+          className={`inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-medium tabular ${cls}`}
+        >
+          <Icon className="h-2.5 w-2.5" />
+          {formatPct(kpi.deltaPct)}
+        </span>
+        <span>{kpi.deltaLabel}</span>
       </div>
     </div>
   );
 }
 
-function Cell({ label, value, delta }: { label: string; value: string; delta: number }) {
-  const tone = delta >= 0 ? (delta >= 5 ? "high" : "mid") : delta <= -20 ? "low" : "mid";
-  const Arrow = delta >= 0 ? ArrowUpRight : ArrowDownRight;
-  const sign = delta > 0 ? "+" : "";
+function RrTile({ tile }: { tile: B2CRrTile }) {
+  const tone = toneFromChange(tile.deltaPct);
+  const toneClass =
+    tone === "positive" ? "text-success" : tone === "negative" ? "text-danger" : "text-muted-foreground";
   return (
-    <div className="min-w-0">
-      <div className="text-[8.5px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
-        {label}
+    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5">
+      <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">
+        {tile.label}
       </div>
-      <div className="mt-0.5 font-display text-ink leading-none text-[20px] tabular truncate">
-        {value}
+      <div className="mt-1 font-display text-ink leading-none tabular truncate flex items-baseline gap-1">
+        <span className="text-lg">{tile.value}</span>
+        <span className="text-[11px] text-muted-foreground">{tile.unit}</span>
       </div>
-      <span
-        className={`mt-1 inline-flex items-center gap-0.5 rounded-md px-1.5 py-0.5 text-[10px] font-semibold tabular ${toneBg[tone]}`}
-      >
-        <Arrow className="h-2.5 w-2.5" />
-        {sign}
-        {delta}%
-      </span>
+      <div className={`mt-1 text-[10px] tabular truncate ${toneClass}`}>
+        {formatPct(tile.deltaPct)} к плану
+      </div>
     </div>
   );
 }
 
-function RRCard({ card }: { card: B2CRRCard }) {
+function SegmentCard({ card }: { card: B2CSegmentCard }) {
   return (
     <div className="rounded-2xl border bg-card p-2.5">
-      <div className="flex items-start justify-between border-b hairline pb-1.5">
-        <div className="min-w-0">
-          <div className="text-[9px] font-semibold uppercase tracking-[0.1em] text-ink">
-            {card.title}
-          </div>
-          <div className="text-[8.5px] font-medium uppercase tracking-[0.06em] text-muted-foreground mt-0.5">
-            {card.unitLabel}
-          </div>
-        </div>
-        <div className="flex gap-3 text-[8px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
-          <span className="w-10 text-right">План</span>
-          <span className="w-8 text-right">Вып.</span>
-        </div>
+      <div className="border-b hairline pb-1.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-ink">
+        {card.title}
       </div>
-
-      <div className="mt-2 flex flex-col gap-1.5">
-        {card.periods.map((p) => {
-          const tone = toneFromPct(p.pct);
+      <div className="mt-1.5 flex flex-col gap-1.5">
+        {card.rows.map((r) => {
+          const { Icon, cls } = deltaPill(r.deltaPct);
           return (
-            <div key={p.label}>
-              <div className="text-[9px] font-semibold uppercase tracking-[0.07em] text-ink mb-1">
-                {p.label}
-              </div>
-              <div className="grid grid-cols-[1fr_auto_auto] items-center gap-2 rounded-lg border bg-muted/40 px-2 py-1.5">
-                <div className="min-w-0">
-                  <div className="text-[13px] font-bold tabular text-ink truncate">
-                    {p.fact}
-                  </div>
-                  <div className="mt-1 h-[3px] w-full rounded-full bg-muted overflow-hidden">
-                    <div
-                      className={`h-full rounded-full ${toneBar[tone]}`}
-                      style={{ width: `${Math.min(100, p.pct)}%` }}
-                    />
-                  </div>
-                </div>
-                <div className="w-10 text-right text-[10.5px] font-medium tabular text-muted-foreground">
-                  {p.plan}
-                </div>
-                <div className={`w-8 text-right text-[15px] font-bold tabular leading-none ${toneText[tone]}`}>
-                  {p.pct}%
-                </div>
+            <div key={r.label} className="flex items-baseline justify-between gap-2">
+              <span className="text-[10px] text-muted-foreground">{r.label}</span>
+              <div className="flex items-baseline gap-1.5 min-w-0">
+                <span className="font-display text-[14px] tabular text-ink leading-none">
+                  {r.value}
+                </span>
+                <span className="text-[10px] text-muted-foreground">{r.unit}</span>
+                <span
+                  className={`inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[9.5px] font-medium tabular ${cls}`}
+                >
+                  <Icon className="h-2.5 w-2.5" />
+                  {formatPct(r.deltaPct)}
+                </span>
               </div>
             </div>
           );
@@ -163,32 +143,33 @@ function RRCard({ card }: { card: B2CRRCard }) {
 function ProductsCard({ products }: { products: B2CProduct[] }) {
   return (
     <div className="rounded-2xl border bg-card p-3">
-      <div className="text-[9px] font-semibold uppercase tracking-[0.07em] text-ink mb-2">
-        ТОП-5 ПРОДУКТОВ · КД МЛН ₽
+      <div className="text-[9px] font-semibold uppercase tracking-[0.1em] text-ink mb-2">
+        ТОП-5 продуктов
       </div>
-      <div className="grid grid-cols-[1fr_52px_52px_44px] gap-1 border-b hairline pb-1 text-[8.5px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+      <div className="grid grid-cols-[1fr_56px_64px_56px] gap-1 border-b hairline pb-1 text-[8.5px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
         <span>Продукт</span>
-        <span className="text-right">Факт</span>
-        <span className="text-right">План</span>
-        <span className="text-right">%</span>
+        <span className="text-right">шт.</span>
+        <span className="text-right">ЧКД, млн ₽</span>
+        <span className="text-right">% новых</span>
       </div>
       {products.map((p) => {
-        const pct = Math.round((p.fact / p.plan) * 100);
-        const tone = toneFromPct(pct);
+        const tone = p.newSharePct >= 100 ? "high" : p.newSharePct >= 75 ? "mid" : "low";
+        const toneText =
+          tone === "high" ? "text-success" : tone === "mid" ? "text-warning" : "text-danger";
         return (
           <div
             key={p.name}
-            className="grid grid-cols-[1fr_52px_52px_44px] gap-1 items-center py-1.5 border-b hairline last:border-b-0"
+            className="grid grid-cols-[1fr_56px_64px_56px] gap-1 items-center py-1.5 border-b hairline last:border-b-0"
           >
             <div className="text-[12px] font-medium text-ink truncate">{p.name}</div>
-            <div className="text-right text-[12px] font-semibold tabular text-ink">
-              {p.fact.toLocaleString("ru-RU")}
+            <div className="text-right text-[12px] tabular text-ink">
+              {p.units.toLocaleString("ru-RU")}
             </div>
             <div className="text-right text-[12px] tabular text-muted-foreground">
-              {p.plan.toLocaleString("ru-RU")}
+              {p.ckd.toLocaleString("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
-            <div className={`text-right text-[13px] font-bold tabular ${toneText[tone]}`}>
-              {pct}%
+            <div className={`text-right text-[13px] font-bold tabular ${toneText}`}>
+              {p.newSharePct}%
             </div>
           </div>
         );
