@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { HeadlineKpi } from "@/components/dashboard/HeadlineKpi";
+import { HeadlineKpi, RunRateCard } from "@/components/dashboard/HeadlineKpi";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { SellersTrend } from "@/components/dashboard/SellersTrend";
 import { B2CInsurance } from "@/components/dashboard/B2CInsurance";
@@ -55,6 +55,9 @@ function Dashboard() {
             title="ЧК Доход"
             secondary={{ metric: metrics.products, title: "Кол-во товаров" }}
           />
+          <div className="mt-2">
+            <RunRateCard metric={metrics.revenue} title="RR ЧК Доход" />
+          </div>
         </section>
 
 
