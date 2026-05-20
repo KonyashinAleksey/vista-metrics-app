@@ -38,14 +38,14 @@ export const b2c = {
   updatedLabel: "19 мая 2026 · Автообновление",
   kpis: [
     {
-      title: "КД без НДС вчера",
+      title: "КД без НДС",
       value: "3,08",
       unit: "млн ₽",
       deltaPct: -12.4,
       deltaLabel: "к позавчера",
     },
     {
-      title: "Штуки продаж вчера",
+      title: "Продажи",
       value: "29 593",
       unit: "шт",
       deltaPct: -8.6,
