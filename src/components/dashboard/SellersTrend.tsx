@@ -1,4 +1,4 @@
-import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import type { MetricSnapshot } from "@/lib/mock-data";
 import { formatValue } from "@/lib/format";
 
@@ -21,17 +21,11 @@ export function SellersTrend({ metric }: { metric: MetricSnapshot }) {
       </div>
       <div className="mt-1 h-16 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={data} margin={{ top: 4, right: 4, bottom: 0, left: 0 }}>
-            <defs>
-              <linearGradient id="sellers-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="var(--color-ink)" stopOpacity={0.18} />
-                <stop offset="100%" stopColor="var(--color-ink)" stopOpacity={0} />
-              </linearGradient>
-            </defs>
+          <BarChart data={data} margin={{ top: 4, right: 4, bottom: 0, left: 0 }} barCategoryGap="20%">
             <XAxis dataKey="day" hide />
             <YAxis domain={[min - pad, max + pad]} hide />
             <Tooltip
-              cursor={{ stroke: "var(--color-hairline)" }}
+              cursor={{ fill: "var(--color-hairline)", opacity: 0.4 }}
               contentStyle={{
                 background: "var(--color-card)",
                 border: "1px solid var(--color-border)",
@@ -42,15 +36,8 @@ export function SellersTrend({ metric }: { metric: MetricSnapshot }) {
               labelStyle={{ color: "var(--color-muted-foreground)" }}
               formatter={(v: number) => [formatValue(v, "number"), "Селлеры"]}
             />
-            <Area
-              type="monotone"
-              dataKey="value"
-              stroke="var(--color-ink)"
-              strokeWidth={1.5}
-              fill="url(#sellers-grad)"
-              isAnimationActive={false}
-            />
-          </AreaChart>
+            <Bar dataKey="value" fill="var(--color-ink)" radius={[2, 2, 0, 0]} isAnimationActive={false} />
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </section>
