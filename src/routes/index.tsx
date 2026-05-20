@@ -50,7 +50,7 @@ function Dashboard() {
               Страховые продукты · B2B
             </h2>
           </div>
-          <HeadlineKpi metric={metrics.revenue} monthLabel={meta.monthLabel} />
+          <HeadlineKpi metric={metrics.revenue} />
         </section>
 
 
