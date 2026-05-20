@@ -37,7 +37,7 @@ export function HeadlineKpi({ metric, title }: { metric: MetricSnapshot; title: 
         </div>
       </div>
 
-      <div className="mt-3 grid grid-cols-3 gap-2 border-t hairline pt-2.5">
+      <div className="mt-3 grid grid-cols-2 gap-2 border-t hairline pt-2.5">
         <Stat
           label="MTD RR"
           value={formatValue(metric.mtd, metric.unit)}
@@ -53,23 +53,6 @@ export function HeadlineKpi({ metric, title }: { metric: MetricSnapshot; title: 
           sub={
             <span className={rrTone === "positive" ? "text-success" : "text-danger"}>
               {formatPct(runRateVsPlan)} к плану
-            </span>
-          }
-        />
-        <Stat
-          label="AVG last 10d"
-          value={formatValue(avg7, metric.unit)}
-          sub={
-            <span
-              className={
-                vs7Tone === "positive"
-                  ? "text-success"
-                  : vs7Tone === "negative"
-                    ? "text-danger"
-                    : "text-muted-foreground"
-              }
-            >
-              {formatPct(vs7)}
             </span>
           }
         />
