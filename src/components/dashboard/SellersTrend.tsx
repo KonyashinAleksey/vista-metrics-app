@@ -1,4 +1,5 @@
-import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { formatCompact } from "@/lib/format";
 import type { MetricSnapshot } from "@/lib/mock-data";
 import { formatValue } from "@/lib/format";
 
