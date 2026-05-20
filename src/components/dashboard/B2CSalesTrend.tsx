@@ -20,9 +20,9 @@ export function B2CSalesTrend() {
           Бенчмарк ({formatValue(benchmark, "number")})
         </div>
       </div>
-      <div className="mt-1 h-28 w-full">
+      <div className="mt-1 h-32 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 6, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
+          <BarChart data={data} margin={{ top: 14, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
             <XAxis
               dataKey="day"
               axisLine={false}
