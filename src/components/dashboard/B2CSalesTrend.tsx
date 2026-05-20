@@ -13,7 +13,7 @@ export function B2CSalesTrend() {
     <section className="rounded-2xl border bg-card px-3 pt-2.5 pb-1">
       <div className="flex items-center justify-between">
         <div className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
-          Штуки продаж за последние 10 дней
+          Продажи за последние 10 дней
         </div>
         <div className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.08em] text-muted-foreground">
           <span className="h-[2px] w-3 bg-warning" />
