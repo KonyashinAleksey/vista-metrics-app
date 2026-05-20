@@ -1,80 +1,89 @@
 // Mock data for B2C insurance products section
 
-export type B2CTopCard = {
+export type B2CKpi = {
   title: string;
-  unitLabel: string;
-  benchmark: string;
-  yesterday: string;
-  yesterdayDelta: number; // %
-  avg10: string;
-  avg10Delta: number;
+  value: string;
+  unit: string;
+  deltaPct: number; // vs day before yesterday
+  deltaLabel: string;
 };
 
-export type B2CRRPeriod = {
-  label: string; // Месяц / Год
-  fact: string;
-  plan: string;
-  pct: number; // 0..200
+export type B2CRrTile = {
+  label: "MTD" | "YTD";
+  value: string;
+  unit: string;
+  deltaPct: number;
 };
 
-export type B2CRRCard = {
+export type B2CSegmentRow = {
+  label: string;
+  value: string;
+  unit: string;
+  deltaPct: number;
+};
+
+export type B2CSegmentCard = {
   title: string;
-  unitLabel: string;
-  periods: B2CRRPeriod[];
+  rows: B2CSegmentRow[];
 };
 
 export type B2CProduct = {
   name: string;
-  fact: number; // млн ₽
-  plan: number;
+  units: number;
+  ckd: number; // млн ₽
+  newSharePct: number;
 };
 
 export const b2c = {
-  monthLabel: "Май 2026",
-  updatedLabel: "18 мая · Автообновление",
-  topCards: [
+  updatedLabel: "19 мая 2026 · Автообновление",
+  kpis: [
     {
-      title: "Продажи",
-      unitLabel: "шт",
-      benchmark: "40 000",
-      yesterday: "29 593",
-      yesterdayDelta: -26,
-      avg10: "29 186",
-      avg10Delta: -27,
+      title: "Комиссионный доход вчера (ЧКД)",
+      value: "3,08",
+      unit: "млн ₽",
+      deltaPct: -12.4,
+      deltaLabel: "к позавчера",
     },
     {
-      title: "КД",
-      unitLabel: "млн ₽",
-      benchmark: "5,0 млн ₽",
-      yesterday: "3,08",
-      yesterdayDelta: -38,
-      avg10: "3,03",
-      avg10Delta: -39,
+      title: "Штуки продаж вчера",
+      value: "29 593",
+      unit: "шт",
+      deltaPct: -8.6,
+      deltaLabel: "к позавчера",
     },
-  ] as B2CTopCard[],
-  rrCards: [
+  ] as B2CKpi[],
+  rr: {
+    title: "RR Чистый комиссионный доход (ЧКД)",
+    tiles: [
+      { label: "MTD", value: "150,2", unit: "млн ₽", deltaPct: -45.1 },
+      { label: "YTD", value: "1 760,1", unit: "млн ₽", deltaPct: -2.9 },
+    ] as B2CRrTile[],
+  },
+  segments: [
     {
-      title: "RR — Штуки",
-      unitLabel: "млн",
-      periods: [
-        { label: "Месяц", fact: "0,32", plan: "0,72", pct: 45 },
-        { label: "Год", fact: "8,21", plan: "8,64", pct: 95 },
+      title: "Новая продажа",
+      rows: [
+        { label: "Штуки", value: "18 412", unit: "шт", deltaPct: -7.2 },
+        { label: "ЧКД", value: "1,94", unit: "млн ₽", deltaPct: -11.3 },
       ],
     },
     {
-      title: "RR — КД",
-      unitLabel: "млн ₽",
-      periods: [
-        { label: "Месяц", fact: "73,25", plan: "150", pct: 49 },
-        { label: "Год", fact: "1 760", plan: "1 800", pct: 98 },
+      title: "Пролонгации",
+      rows: [
+        { label: "Штуки", value: "11 181", unit: "шт", deltaPct: 3.1 },
+        { label: "ЧКД", value: "1,14", unit: "млн ₽", deltaPct: -4.8 },
       ],
     },
-  ] as B2CRRCard[],
+  ] as B2CSegmentCard[],
   topProducts: [
-    { name: "Защита товара", fact: 69.0, plan: 182.0 },
-    { name: "Химчистка одежды", fact: 3.1, plan: 1.8 },
-    { name: "СОМ", fact: 2.5, plan: 0.9 },
-    { name: "Спортзащита", fact: 0.2, plan: 0.25 },
-    { name: "Антиклещ", fact: 0.15, plan: 0.2 },
+    { name: "Защита товара", units: 14320, ckd: 1.82, newSharePct: 38 },
+    { name: "Химчистка одежды", units: 7840, ckd: 0.62, newSharePct: 171 },
+    { name: "СОМ", units: 4210, ckd: 0.34, newSharePct: 267 },
+    { name: "Спортзащита", units: 2190, ckd: 0.18, newSharePct: 80 },
+    { name: "Антиклещ", units: 1033, ckd: 0.12, newSharePct: 75 },
   ] as B2CProduct[],
+  salesLast10: {
+    benchmark: 40000,
+    series: [22000, 26500, 36500, 29800, 27300, 32700, 30900, 26300, 28700, 29593],
+  },
 };

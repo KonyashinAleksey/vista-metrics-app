@@ -1,27 +1,28 @@
-import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { formatValue } from "@/lib/format";
-
-const SERIES = [22496, 26472, 36780, 30016, 27338, 32931, 31090, 26274, 28869, 29593];
+import { b2c } from "@/lib/b2c-data";
 
 export function B2CSalesTrend() {
-  const data = SERIES.map((v, i) => ({ day: `${9 + i}.05`, value: v }));
-  const min = Math.min(...SERIES);
-  const max = Math.max(...SERIES);
-  const pad = Math.round((max - min) * 0.2) || 1;
+  const { series, benchmark } = b2c.salesLast10;
+  const data = series.map((v, i) => ({ day: `${10 + i}.05`, value: v }));
+  const min = Math.min(...series);
+  const max = Math.max(...series, benchmark);
+  const pad = Math.round((max - min) * 0.15) || 1;
 
   return (
     <section className="rounded-2xl border bg-card px-3 pt-2.5 pb-1">
       <div className="flex items-center justify-between">
         <div className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
-          Продажи КСП · шт · 10 дней
+          Штуки продаж за последние 10 дней
         </div>
-        <div className="text-[10px] tabular text-muted-foreground">
-          {formatValue(min, "number")} – {formatValue(max, "number")}
+        <div className="flex items-center gap-1.5 text-[9px] uppercase tracking-[0.08em] text-muted-foreground">
+          <span className="h-[2px] w-3 bg-warning" />
+          Бенчмарк ({formatValue(benchmark, "number")})
         </div>
       </div>
-      <div className="mt-1 h-20 w-full">
+      <div className="mt-1 h-28 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 4, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
+          <BarChart data={data} margin={{ top: 6, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
             <XAxis
               dataKey="day"
               axisLine={false}
@@ -30,7 +31,13 @@ export function B2CSalesTrend() {
               tick={{ fontSize: 9, fill: "var(--color-muted-foreground)" }}
               tickMargin={4}
             />
-            <YAxis domain={[min - pad, max + pad]} hide />
+            <YAxis domain={[Math.max(0, min - pad), max + pad]} hide />
+            <ReferenceLine
+              y={benchmark}
+              stroke="var(--color-warning)"
+              strokeDasharray="3 3"
+              strokeWidth={1}
+            />
             <Tooltip
               cursor={{ fill: "var(--color-hairline)", opacity: 0.4 }}
               contentStyle={{
