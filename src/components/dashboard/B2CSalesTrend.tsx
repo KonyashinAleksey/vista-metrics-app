@@ -1,5 +1,5 @@
-import { Bar, BarChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { formatValue } from "@/lib/format";
+import { Bar, BarChart, LabelList, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { formatValue, formatCompact } from "@/lib/format";
 import { b2c } from "@/lib/b2c-data";
 
 export function B2CSalesTrend() {
