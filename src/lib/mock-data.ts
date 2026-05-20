@@ -156,6 +156,7 @@ export const metrics = {
     "number",
     productsDaily,
     31_000_000,
+    "шт",
   ),
 };
 
