@@ -2,7 +2,7 @@ import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { formatPct, formatValue, splitValueUnit, toneFromChange } from "@/lib/format";
 import type { MetricSnapshot } from "@/lib/mock-data";
 
-export function HeadlineKpi({ metric }: { metric: MetricSnapshot }) {
+export function HeadlineKpi({ metric, title }: { metric: MetricSnapshot; title: string }) {
   const tone = toneFromChange(metric.dodChangePct);
   const Arrow = tone === "negative" ? ArrowDownRight : ArrowUpRight;
 
