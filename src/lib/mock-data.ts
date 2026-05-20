@@ -50,6 +50,10 @@ const gmvDaily = generateSeries(48_000_000, 0.15, 0.18, MONTH_DAYS).slice(0, TOD
 const penetrationDaily = generateSeries(3200, 0.04, 0.03, MONTH_DAYS)
   .slice(0, TODAY_DAY)
   .map((v, i) => v / (8800 + i * 12)); // ratio
+let productsDaily = generateSeries(920_000, 0.15, 0.15, MONTH_DAYS);
+productsDaily[16] = 950_000;
+productsDaily[17] = 1_000_000;
+productsDaily = productsDaily.slice(0, TODAY_DAY);
 
 export const dailySeries: DailyPoint[] = revenueDaily.map((rev, i) => ({
   day: i + 1,
