@@ -153,9 +153,7 @@ function ProductsCard({ products }: { products: B2CProduct[] }) {
         <span className="text-right">% новых</span>
       </div>
       {products.map((p) => {
-        const tone = p.newSharePct >= 100 ? "high" : p.newSharePct >= 75 ? "mid" : "low";
-        const toneText =
-          tone === "high" ? "text-success" : tone === "mid" ? "text-warning" : "text-danger";
+        const fillPct = Math.min(Math.max(p.newSharePct, 0), 100);
         return (
           <div
             key={p.name}
@@ -168,8 +166,14 @@ function ProductsCard({ products }: { products: B2CProduct[] }) {
             <div className="text-right text-[12px] tabular text-muted-foreground">
               {p.ckd.toLocaleString("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
-            <div className={`text-right text-[13px] font-bold tabular ${toneText}`}>
-              {p.newSharePct}%
+            <div className="flex flex-col items-end gap-1">
+              <span className="text-[12px] tabular text-ink">{p.newSharePct}%</span>
+              <div className="w-10 h-1 bg-muted rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-ink rounded-full"
+                  style={{ width: `${fillPct}%` }}
+                />
+              </div>
             </div>
           </div>
         );
