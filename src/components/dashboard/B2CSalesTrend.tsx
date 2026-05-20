@@ -50,7 +50,15 @@ export function B2CSalesTrend() {
               labelStyle={{ color: "var(--color-muted-foreground)" }}
               formatter={(v: number) => [formatValue(v, "number"), "Продажи"]}
             />
-            <Bar dataKey="value" fill="var(--color-ink)" radius={[2, 2, 0, 0]} isAnimationActive={false} />
+            <Bar dataKey="value" fill="var(--color-ink)" radius={[2, 2, 0, 0]} isAnimationActive={false}>
+              <LabelList
+                dataKey="value"
+                position="top"
+                offset={3}
+                formatter={(v: number) => formatCompact(v)}
+                style={{ fontSize: 9, fill: "var(--color-ink)" }}
+              />
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
