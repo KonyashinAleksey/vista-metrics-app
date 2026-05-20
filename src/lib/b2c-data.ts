@@ -55,8 +55,8 @@ export const b2c = {
   rr: {
     title: "RR КД без НДС",
     tiles: [
-      { label: "MTD", value: "150,2", unit: "млн ₽", deltaPct: -45.1 },
-      { label: "YTD", value: "1 760,1", unit: "млн ₽", deltaPct: -2.9 },
+      { label: "RR по месяцу", value: "150,2", unit: "млн ₽", deltaPct: -45.1 },
+      { label: "RR по году", value: "1 760,1", unit: "млн ₽", deltaPct: -2.9 },
     ] as B2CRrTile[],
   },
   segments: [
