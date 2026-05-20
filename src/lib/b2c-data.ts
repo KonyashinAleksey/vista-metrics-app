@@ -38,7 +38,7 @@ export const b2c = {
   updatedLabel: "19 мая 2026 · Автообновление",
   kpis: [
     {
-      title: "Комиссионный доход вчера (ЧКД)",
+      title: "КД без НДС вчера",
       value: "3,08",
       unit: "млн ₽",
       deltaPct: -12.4,
@@ -53,7 +53,7 @@ export const b2c = {
     },
   ] as B2CKpi[],
   rr: {
-    title: "RR Чистый комиссионный доход (ЧКД)",
+    title: "RR КД без НДС",
     tiles: [
       { label: "MTD", value: "150,2", unit: "млн ₽", deltaPct: -45.1 },
       { label: "YTD", value: "1 760,1", unit: "млн ₽", deltaPct: -2.9 },
