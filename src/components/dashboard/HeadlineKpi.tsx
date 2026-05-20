@@ -11,34 +11,37 @@ export function HeadlineKpi({
   title: string;
   secondary?: { metric: MetricSnapshot; title: string };
 }) {
-  const runRateVsPlan = ((metric.runRate - metric.planTarget) / metric.planTarget) * 100;
-  const rrTone = runRateVsPlan >= 0 ? "positive" : "negative";
-
   return (
     <section className="rounded-2xl border bg-card p-4">
       <div className={secondary ? "grid grid-cols-2 gap-4" : ""}>
         <KpiBlock metric={metric} title={title} />
         {secondary && <KpiBlock metric={secondary.metric} title={secondary.title} />}
       </div>
+    </section>
+  );
+}
 
-      <div className="mt-3 grid grid-cols-2 gap-2 border-t hairline pt-2.5">
+export function RunRateCard({ metric, title }: { metric: MetricSnapshot; title: string }) {
+  const runRateVsPlan = ((metric.runRate - metric.planTarget) / metric.planTarget) * 100;
+  const rrTone = runRateVsPlan >= 0 ? "positive" : "negative";
+  const toneClass = rrTone === "positive" ? "text-success" : "text-danger";
+
+  return (
+    <section className="rounded-2xl border bg-card p-4">
+      <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+        <span className="h-1 w-1 rounded-full bg-ink" />
+        {title}
+      </div>
+      <div className="mt-2 grid grid-cols-2 gap-2">
         <Stat
           label="MTD RR"
           value={formatValue(metric.mtd, metric.unit)}
-          sub={
-            <span className={rrTone === "positive" ? "text-success" : "text-danger"}>
-              {formatPct(runRateVsPlan)} к плану
-            </span>
-          }
+          sub={<span className={toneClass}>{formatPct(runRateVsPlan)} к плану</span>}
         />
         <Stat
           label="YTD RR"
           value={formatValue(metric.runRate, metric.unit)}
-          sub={
-            <span className={rrTone === "positive" ? "text-success" : "text-danger"}>
-              {formatPct(runRateVsPlan)} к плану
-            </span>
-          }
+          sub={<span className={toneClass}>{formatPct(runRateVsPlan)} к плану</span>}
         />
       </div>
     </section>
