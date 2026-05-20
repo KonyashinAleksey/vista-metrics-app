@@ -16,7 +16,7 @@ export function SellersTrend({ metric }: { metric: MetricSnapshot }) {
           Актив селлеры · 10 дней
         </div>
         <div className="text-[10px] tabular text-muted-foreground">
-          {formatValue(min, "number")} – {formatValue(max, "number")}
+          {formatValue(min, "number")} – {formatValue(max, "number")} {metric.displayUnit ?? ""}
         </div>
       </div>
       <div className="mt-1 h-16 w-full">

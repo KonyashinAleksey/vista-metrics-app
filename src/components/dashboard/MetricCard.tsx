@@ -29,10 +29,16 @@ export function MetricCard({ metric }: { metric: MetricSnapshot }) {
       </div>
       <div className="mt-1 font-display text-ink leading-none tabular truncate">
         <ValueUnit formatted={formatValue(metric.yesterday, metric.unit)} valueClass="text-lg" unitClass="text-[11px]" />
+        {metric.displayUnit && (
+          <span className="text-[11px] text-muted-foreground ml-1">{metric.displayUnit}</span>
+        )}
       </div>
-      <div className={`mt-1 inline-flex items-center gap-0.5 text-[10px] font-medium tabular ${toneClass[dodTone]}`}>
-        <Icon className="h-2.5 w-2.5" />
-        {formatPct(metric.dodChangePct)}
+      <div className="mt-1 flex items-center gap-2 text-[10px] tabular text-muted-foreground">
+        <span>-1d</span>
+        <span className={`inline-flex items-center gap-0.5 font-medium ${toneClass[dodTone]}`}>
+          <Icon className="h-2.5 w-2.5" />
+          {formatPct(metric.dodChangePct)}
+        </span>
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ export type DailyPoint = {
 export type MetricSnapshot = {
   label: string;
   unit: "currency" | "number" | "percent";
+  displayUnit?: string;
   yesterday: number;
   dodChangePct: number; // vs prior day
   mtd: number;
@@ -80,6 +81,7 @@ function buildSnapshot(
   unit: MetricSnapshot["unit"],
   daily: number[],
   planTarget: number,
+  displayUnit?: string,
 ): MetricSnapshot {
   const lastIdx = daily.length - 1;
   const yesterday = daily[lastIdx];
@@ -109,6 +111,7 @@ function buildSnapshot(
   return {
     label,
     unit,
+    displayUnit,
     yesterday,
     dodChangePct: pct(yesterday, prev),
     mtd,
@@ -134,6 +137,7 @@ export const metrics = {
     "number",
     dailySeries.map((d) => d.activeSellers),
     5_200,
+    "шт",
   ),
   insuredGmv: buildSnapshot(
     "GMV",
@@ -152,6 +156,7 @@ export const metrics = {
     "number",
     productsDaily,
     31_000_000,
+    "шт",
   ),
 };
 

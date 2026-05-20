@@ -74,6 +74,9 @@ function KpiBlock({ metric, title }: { metric: MetricSnapshot; title: string }) 
       </div>
       <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline gap-1.5">
         <ValueUnit formatted={formatValue(metric.yesterday, metric.unit)} valueClass="text-[40px]" unitClass="text-xl" />
+        {metric.displayUnit && (
+          <span className="text-xl text-muted-foreground">{metric.displayUnit}</span>
+        )}
       </h1>
       <div className="mt-1.5 flex items-center gap-2 text-[11px] text-muted-foreground">
         <span>-1d</span>
