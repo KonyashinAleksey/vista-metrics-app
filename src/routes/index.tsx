@@ -44,7 +44,14 @@ function Dashboard() {
       </header>
 
       <main className="flex flex-1 flex-col gap-3 px-3 py-3">
-        <HeadlineKpi metric={metrics.revenue} monthLabel={meta.monthLabel} />
+        <section className="flex flex-col">
+          <div className="mb-1.5">
+            <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+              Страховые продукты · B2B
+            </h2>
+          </div>
+          <HeadlineKpi metric={metrics.revenue} monthLabel={meta.monthLabel} />
+        </section>
 
 
         <section className="flex flex-col">
