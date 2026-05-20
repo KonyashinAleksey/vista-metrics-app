@@ -9,11 +9,6 @@ export function HeadlineKpi({ metric, title }: { metric: MetricSnapshot; title: 
   const runRateVsPlan = ((metric.runRate - metric.planTarget) / metric.planTarget) * 100;
   const rrTone = runRateVsPlan >= 0 ? "positive" : "negative";
 
-  // Δ к 7-дн. средней
-  const last7 = metric.daily.slice(-7);
-  const avg7 = last7.reduce((s, v) => s + v, 0) / last7.length;
-  const vs7 = ((metric.yesterday - avg7) / avg7) * 100;
-  const vs7Tone = toneFromChange(vs7);
 
   return (
     <section className="rounded-2xl border bg-card p-4">
