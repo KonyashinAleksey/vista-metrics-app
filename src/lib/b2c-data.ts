@@ -61,7 +61,7 @@ export const b2c = {
   },
   segments: [
     {
-      title: "Новая продажа",
+      title: "Новые продажи",
       rows: [
         { label: "Штуки", value: "18 412", unit: "шт", deltaPct: -7.2 },
         { label: "ЧКД", value: "1,94", unit: "млн ₽", deltaPct: -11.3 },
