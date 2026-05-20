@@ -2,7 +2,7 @@ import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { formatPct, formatValue, splitValueUnit, toneFromChange } from "@/lib/format";
 import type { MetricSnapshot } from "@/lib/mock-data";
 
-export function HeadlineKpi({ metric }: { metric: MetricSnapshot }) {
+export function HeadlineKpi({ metric, title }: { metric: MetricSnapshot; title: string }) {
   const tone = toneFromChange(metric.dodChangePct);
   const Arrow = tone === "negative" ? ArrowDownRight : ArrowUpRight;
 
@@ -20,7 +20,7 @@ export function HeadlineKpi({ metric }: { metric: MetricSnapshot }) {
       <div>
         <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
           <span className="h-1 w-1 rounded-full bg-ink" />
-          ЧК Доход
+          {title}
         </div>
         <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline gap-1.5">
           <ValueUnit formatted={formatValue(metric.yesterday, metric.unit)} valueClass="text-[40px]" unitClass="text-xl" />

@@ -50,7 +50,10 @@ function Dashboard() {
               Страховые продукты · B2B
             </h2>
           </div>
-          <HeadlineKpi metric={metrics.revenue} />
+          <div className="grid grid-cols-2 gap-2">
+            <HeadlineKpi metric={metrics.revenue} title="ЧК Доход" />
+            <HeadlineKpi metric={metrics.products} title="Кол-во товаров" />
+          </div>
         </section>
 
 
