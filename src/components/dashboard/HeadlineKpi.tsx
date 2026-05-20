@@ -9,11 +9,6 @@ export function HeadlineKpi({ metric, title }: { metric: MetricSnapshot; title: 
   const runRateVsPlan = ((metric.runRate - metric.planTarget) / metric.planTarget) * 100;
   const rrTone = runRateVsPlan >= 0 ? "positive" : "negative";
 
-  // Δ к 7-дн. средней
-  const last7 = metric.daily.slice(-7);
-  const avg7 = last7.reduce((s, v) => s + v, 0) / last7.length;
-  const vs7 = ((metric.yesterday - avg7) / avg7) * 100;
-  const vs7Tone = toneFromChange(vs7);
 
   return (
     <section className="rounded-2xl border bg-card p-4">
@@ -42,7 +37,7 @@ export function HeadlineKpi({ metric, title }: { metric: MetricSnapshot; title: 
         </div>
       </div>
 
-      <div className="mt-3 grid grid-cols-3 gap-2 border-t hairline pt-2.5">
+      <div className="mt-3 grid grid-cols-2 gap-2 border-t hairline pt-2.5">
         <Stat
           label="MTD RR"
           value={formatValue(metric.mtd, metric.unit)}
@@ -58,23 +53,6 @@ export function HeadlineKpi({ metric, title }: { metric: MetricSnapshot; title: 
           sub={
             <span className={rrTone === "positive" ? "text-success" : "text-danger"}>
               {formatPct(runRateVsPlan)} к плану
-            </span>
-          }
-        />
-        <Stat
-          label="AVG last 10d"
-          value={formatValue(avg7, metric.unit)}
-          sub={
-            <span
-              className={
-                vs7Tone === "positive"
-                  ? "text-success"
-                  : vs7Tone === "negative"
-                    ? "text-danger"
-                    : "text-muted-foreground"
-              }
-            >
-              {formatPct(vs7)}
             </span>
           }
         />
