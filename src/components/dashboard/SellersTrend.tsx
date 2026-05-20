@@ -13,7 +13,7 @@ export function SellersTrend({ metric }: { metric: MetricSnapshot }) {
     <section className="rounded-2xl border bg-card px-3 pt-2.5 pb-1">
       <div className="flex items-center justify-between">
         <div className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
-          Активные селлеры · 10 дней
+          Актив селлеры · 10 дней
         </div>
         <div className="text-[10px] tabular text-muted-foreground">
           {formatValue(min, "number")} – {formatValue(max, "number")}

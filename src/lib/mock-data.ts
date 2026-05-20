@@ -130,13 +130,13 @@ export const metrics = {
     32_000_000,
   ),
   activeSellers: buildSnapshot(
-    "Активные селлеры",
+    "Актив селлеры",
     "number",
     dailySeries.map((d) => d.activeSellers),
     5_200,
   ),
   insuredGmv: buildSnapshot(
-    "GMV застрахованных заказов",
+    "GMV",
     "currency",
     dailySeries.map((d) => d.insuredGmv),
     1_900_000_000,
