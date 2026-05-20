@@ -1,4 +1,4 @@
-import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { formatValue } from "@/lib/format";
 
 const SERIES = [22496, 26472, 36780, 30016, 27338, 32931, 31090, 26274, 28869, 29593];
@@ -21,17 +21,11 @@ export function B2CSalesTrend() {
       </div>
       <div className="mt-1 h-16 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={data} margin={{ top: 4, right: 4, bottom: 0, left: 0 }}>
-            <defs>
-              <linearGradient id="b2c-sales-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="var(--color-ink)" stopOpacity={0.18} />
-                <stop offset="100%" stopColor="var(--color-ink)" stopOpacity={0} />
-              </linearGradient>
-            </defs>
+          <BarChart data={data} margin={{ top: 4, right: 4, bottom: 0, left: 0 }} barCategoryGap="20%">
             <XAxis dataKey="day" hide />
             <YAxis domain={[min - pad, max + pad]} hide />
             <Tooltip
-              cursor={{ stroke: "var(--color-hairline)" }}
+              cursor={{ fill: "var(--color-hairline)", opacity: 0.4 }}
               contentStyle={{
                 background: "var(--color-card)",
                 border: "1px solid var(--color-border)",
@@ -42,15 +36,8 @@ export function B2CSalesTrend() {
               labelStyle={{ color: "var(--color-muted-foreground)" }}
               formatter={(v: number) => [formatValue(v, "number"), "Продажи"]}
             />
-            <Area
-              type="monotone"
-              dataKey="value"
-              stroke="var(--color-ink)"
-              strokeWidth={1.5}
-              fill="url(#b2c-sales-grad)"
-              isAnimationActive={false}
-            />
-          </AreaChart>
+            <Bar dataKey="value" fill="var(--color-ink)" radius={[2, 2, 0, 0]} isAnimationActive={false} />
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </section>
