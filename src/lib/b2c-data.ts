@@ -77,8 +77,8 @@ export const b2c = {
   ] as B2CSegmentCard[],
   topProducts: [
     { name: "Защита товара", units: 14320, ckd: 1.82, newSharePct: 38 },
-    { name: "Химчистка одежды", units: 7840, ckd: 0.62, newSharePct: 171 },
-    { name: "СОМ", units: 4210, ckd: 0.34, newSharePct: 267 },
+    { name: "Химчистка одежды", units: 7840, ckd: 0.62, newSharePct: 71 },
+    { name: "СОМ", units: 4210, ckd: 0.34, newSharePct: 67 },
     { name: "Спортзащита", units: 2190, ckd: 0.18, newSharePct: 80 },
     { name: "Антиклещ", units: 1033, ckd: 0.12, newSharePct: 75 },
   ] as B2CProduct[],

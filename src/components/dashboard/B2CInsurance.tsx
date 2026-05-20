@@ -152,9 +152,7 @@ function ProductsCard({ products }: { products: B2CProduct[] }) {
         <span className="text-right">ЧКД, млн ₽</span>
         <span className="text-right">% новых</span>
       </div>
-      {products.map((p) => {
-        const fillPct = Math.min(Math.max(p.newSharePct, 0), 100);
-        return (
+      {products.map((p) => (
           <div
             key={p.name}
             className="grid grid-cols-[1fr_56px_64px_56px] gap-1 items-center py-1.5 border-b hairline last:border-b-0"
@@ -166,18 +164,11 @@ function ProductsCard({ products }: { products: B2CProduct[] }) {
             <div className="text-right text-[12px] tabular text-muted-foreground">
               {p.ckd.toLocaleString("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
-            <div className="flex flex-col items-end gap-1">
-              <span className="text-[12px] tabular text-ink">{p.newSharePct}%</span>
-              <div className="w-10 h-1 bg-muted rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-ink rounded-full"
-                  style={{ width: `${fillPct}%` }}
-                />
-              </div>
+            <div className="text-right text-[12px] tabular text-ink">
+              {p.newSharePct}%
             </div>
           </div>
-        );
-      })}
+        ))}
     </div>
   );
 }
