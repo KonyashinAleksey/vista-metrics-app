@@ -187,7 +187,7 @@ export function buildMonthProjection() {
 export const insights = [
   {
     tone: "positive" as const,
-    title: "Чистый комиссионный доход выше плана на день",
+    title: "КД без НДС выше плана на день",
     body: "RR YTD на 6.4% опережает план. Основной драйвер — рост GMV застрахованных заказов (+12% к 10-дн. средней).",
   },
   {
