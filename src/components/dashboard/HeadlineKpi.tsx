@@ -35,12 +35,12 @@ export function RunRateCard({ metric, title }: { metric: MetricSnapshot; title: 
       </div>
       <div className="grid grid-cols-2 gap-2">
         <RrTile
-          label="RR по месяцу"
+          label="по месяцу"
           value={formatValue(metric.mtd, metric.unit)}
           sub={<span className={toneClass}>{formatPct(runRateVsPlan)} к плану</span>}
         />
         <RrTile
-          label="RR по году"
+          label="по году"
           value={formatValue(metric.runRate, metric.unit)}
           sub={<span className={toneClass}>{formatPct(runRateVsPlan)} к плану</span>}
         />
