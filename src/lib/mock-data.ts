@@ -137,6 +137,7 @@ export const metrics = {
     "number",
     dailySeries.map((d) => d.activeSellers),
     5_200,
+    "шт",
   ),
   insuredGmv: buildSnapshot(
     "GMV",
