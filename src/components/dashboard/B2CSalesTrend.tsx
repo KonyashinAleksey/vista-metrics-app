@@ -1,5 +1,5 @@
-import { Bar, BarChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { formatValue } from "@/lib/format";
+import { Bar, BarChart, LabelList, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { formatValue, formatCompact } from "@/lib/format";
 import { b2c } from "@/lib/b2c-data";
 
 export function B2CSalesTrend() {
@@ -20,9 +20,9 @@ export function B2CSalesTrend() {
           Бенчмарк ({formatValue(benchmark, "number")})
         </div>
       </div>
-      <div className="mt-1 h-28 w-full">
+      <div className="mt-1 h-32 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 6, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
+          <BarChart data={data} margin={{ top: 14, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
             <XAxis
               dataKey="day"
               axisLine={false}
@@ -50,7 +50,15 @@ export function B2CSalesTrend() {
               labelStyle={{ color: "var(--color-muted-foreground)" }}
               formatter={(v: number) => [formatValue(v, "number"), "Продажи"]}
             />
-            <Bar dataKey="value" fill="var(--color-ink)" radius={[2, 2, 0, 0]} isAnimationActive={false} />
+            <Bar dataKey="value" fill="var(--color-ink)" radius={[2, 2, 0, 0]} isAnimationActive={false}>
+              <LabelList
+                dataKey="value"
+                position="top"
+                offset={3}
+                formatter={(v: number) => formatCompact(v)}
+                style={{ fontSize: 9, fill: "var(--color-ink)" }}
+              />
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>

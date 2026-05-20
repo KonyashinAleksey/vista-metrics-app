@@ -1,4 +1,5 @@
-import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { formatCompact } from "@/lib/format";
 import type { MetricSnapshot } from "@/lib/mock-data";
 import { formatValue } from "@/lib/format";
 
@@ -19,9 +20,9 @@ export function SellersTrend({ metric }: { metric: MetricSnapshot }) {
           {formatValue(min, "number")} – {formatValue(max, "number")} {metric.displayUnit ?? ""}
         </div>
       </div>
-      <div className="mt-1 h-20 w-full">
+      <div className="mt-1 h-24 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 4, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
+          <BarChart data={data} margin={{ top: 12, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
             <XAxis
               dataKey="day"
               axisLine={false}
@@ -43,7 +44,15 @@ export function SellersTrend({ metric }: { metric: MetricSnapshot }) {
               labelStyle={{ color: "var(--color-muted-foreground)" }}
               formatter={(v: number) => [formatValue(v, "number"), "Селлеры"]}
             />
-            <Bar dataKey="value" fill="var(--color-ink)" radius={[2, 2, 0, 0]} isAnimationActive={false} />
+            <Bar dataKey="value" fill="var(--color-ink)" radius={[2, 2, 0, 0]} isAnimationActive={false}>
+              <LabelList
+                dataKey="value"
+                position="top"
+                offset={3}
+                formatter={(v: number) => formatCompact(v)}
+                style={{ fontSize: 9, fill: "var(--color-ink)" }}
+              />
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
