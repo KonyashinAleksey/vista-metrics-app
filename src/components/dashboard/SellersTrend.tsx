@@ -4,7 +4,7 @@ import { formatValue } from "@/lib/format";
 
 export function SellersTrend({ metric }: { metric: MetricSnapshot }) {
   const last10 = metric.daily.slice(-10);
-  const data = last10.map((v, i) => ({ day: `Д${i + 1}`, value: v }));
+  const data = last10.map((v, i) => ({ day: `${9 + i}.05`, value: v }));
   const min = Math.min(...last10);
   const max = Math.max(...last10);
   const pad = Math.round((max - min) * 0.2) || 1;
@@ -19,10 +19,17 @@ export function SellersTrend({ metric }: { metric: MetricSnapshot }) {
           {formatValue(min, "number")} – {formatValue(max, "number")} {metric.displayUnit ?? ""}
         </div>
       </div>
-      <div className="mt-1 h-16 w-full">
+      <div className="mt-1 h-20 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 4, right: 4, bottom: 0, left: 0 }} barCategoryGap="20%">
-            <XAxis dataKey="day" hide />
+          <BarChart data={data} margin={{ top: 4, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              interval={0}
+              tick={{ fontSize: 9, fill: "var(--color-muted-foreground)" }}
+              tickMargin={4}
+            />
             <YAxis domain={[min - pad, max + pad]} hide />
             <Tooltip
               cursor={{ fill: "var(--color-hairline)", opacity: 0.4 }}
