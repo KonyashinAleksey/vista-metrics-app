@@ -27,24 +27,39 @@ export function RunRateCard({ metric, title }: { metric: MetricSnapshot; title: 
   const toneClass = rrTone === "positive" ? "text-success" : "text-danger";
 
   return (
-    <section className="rounded-2xl border bg-card p-4">
-      <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-        <span className="h-1 w-1 rounded-full bg-ink" />
-        {title}
+    <section className="flex flex-col">
+      <div className="mb-1.5">
+        <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+          {title}
+        </h2>
       </div>
-      <div className="mt-2 grid grid-cols-2 gap-2">
-        <Stat
+      <div className="grid grid-cols-2 gap-2">
+        <RrTile
           label="MTD RR"
           value={formatValue(metric.mtd, metric.unit)}
           sub={<span className={toneClass}>{formatPct(runRateVsPlan)} к плану</span>}
         />
-        <Stat
+        <RrTile
           label="YTD RR"
           value={formatValue(metric.runRate, metric.unit)}
           sub={<span className={toneClass}>{formatPct(runRateVsPlan)} к плану</span>}
         />
       </div>
     </section>
+  );
+}
+
+function RrTile({ label, value, sub }: { label: string; value: string; sub?: React.ReactNode }) {
+  return (
+    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5">
+      <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">
+        {label}
+      </div>
+      <div className="mt-1 font-display text-ink leading-none tabular truncate">
+        <ValueUnit formatted={value} valueClass="text-lg" unitClass="text-[11px]" />
+      </div>
+      {sub && <div className="mt-1 text-[10px] tabular truncate">{sub}</div>}
+    </div>
   );
 }
 

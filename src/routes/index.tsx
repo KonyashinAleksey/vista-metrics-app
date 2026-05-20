@@ -55,7 +55,7 @@ function Dashboard() {
             title="ЧК Доход"
             secondary={{ metric: metrics.products, title: "Кол-во товаров" }}
           />
-          <div className="mt-2">
+          <div className="mt-3">
             <RunRateCard metric={metrics.revenue} title="RR ЧК Доход" />
           </div>
         </section>
