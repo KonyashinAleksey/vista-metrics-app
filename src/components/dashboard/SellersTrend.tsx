@@ -20,7 +20,7 @@ export function SellersTrend({ metric }: { metric: MetricSnapshot }) {
           {formatValue(min, "number")} – {formatValue(max, "number")} {metric.displayUnit ?? ""}
         </div>
       </div>
-      <div className="mt-1 h-20 w-full">
+      <div className="mt-1 h-24 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 4, right: 0, bottom: 0, left: 0 }} barCategoryGap="20%">
             <XAxis
