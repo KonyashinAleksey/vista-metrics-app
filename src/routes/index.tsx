@@ -53,16 +53,16 @@ function Dashboard() {
             </h2>
           </div>
           <section className="rounded-2xl border bg-card p-4">
-            <div>
-              <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 <span className="h-1 w-1 rounded-full bg-ink" />
                 КД без НДС
               </div>
-              <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline gap-1.5">
+              <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline justify-center gap-1.5">
                 <span className="text-[40px]">4,12</span>
                 <span className="text-xl text-muted-foreground">млн ₽</span>
               </h1>
-              <div className="mt-1.5 flex items-center gap-2 text-[11px] text-muted-foreground">
+              <div className="mt-1.5 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
                 <span>-1d</span>
                 <span className="inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-medium tabular bg-success/10 text-success">
                   +2.8%
