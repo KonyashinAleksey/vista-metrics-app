@@ -23,17 +23,17 @@ export function MetricCard({ metric }: { metric: MetricSnapshot }) {
   const Icon = dodTone === "positive" ? ArrowUpRight : dodTone === "negative" ? ArrowDownRight : Minus;
 
   return (
-    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-center">
+    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-left">
       <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">
         {metric.label}
       </div>
-      <div className="mt-1 font-display text-ink leading-none tabular truncate flex items-baseline justify-center gap-1">
+      <div className="mt-1 font-display text-ink leading-none tabular truncate flex items-baseline gap-1">
         <ValueUnit formatted={formatValue(metric.yesterday, metric.unit)} valueClass="text-lg" unitClass="text-[11px]" />
         {metric.displayUnit && (
           <span className="text-[11px] text-muted-foreground ml-1">{metric.displayUnit}</span>
         )}
       </div>
-      <div className="mt-1 flex items-center justify-center gap-2 text-[10px] tabular text-muted-foreground">
+      <div className="mt-1 flex items-center gap-2 text-[10px] tabular text-muted-foreground">
         <span>-1d</span>
         <span className={`inline-flex items-center gap-0.5 font-medium ${toneClass[dodTone]}`}>
           <Icon className="h-2.5 w-2.5" />
