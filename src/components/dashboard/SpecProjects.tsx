@@ -175,6 +175,44 @@ export function SpecProjects() {
           ))}
         </div>
       </section>
+
+      <details className="group rounded-2xl border bg-card">
+        <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3">
+          <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            Данные за последние 10 дней
+          </h2>
+          <ChevronDown className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-180" />
+        </summary>
+        <div className="overflow-x-auto px-4 pb-4">
+          <table className="w-full text-[11px] tabular">
+            <thead>
+              <tr className="text-left text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground">
+                <th className="py-2 pr-3 font-medium">Дата</th>
+                <th className="py-2 pr-3 font-medium">Открыто счетов</th>
+                <th className="py-2 pr-3 font-medium">Бенч</th>
+                <th className="py-2 pr-3 font-medium">Конверсия</th>
+                <th className="py-2 pr-3 font-medium">Кол-во Ш.Е.</th>
+                <th className="py-2 pr-3 font-medium">Счетов на Ш.Е.</th>
+                <th className="py-2 font-medium">SLA (мин.)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dailyRows.map((r) => (
+                <tr key={r[0]} className="border-t text-ink">
+                  {r.map((c, i) => (
+                    <td key={i} className={`py-2 ${i === r.length - 1 ? "" : "pr-3"}`}>{c}</td>
+                  ))}
+                </tr>
+              ))}
+              <tr className="border-t font-semibold text-ink">
+                {dailyTotal.map((c, i) => (
+                  <td key={i} className={`py-2 ${i === dailyTotal.length - 1 ? "" : "pr-3"}`}>{c}</td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
     </section>
   );
 }
