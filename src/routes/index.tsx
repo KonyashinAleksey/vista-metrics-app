@@ -47,7 +47,7 @@ function Dashboard() {
 
       <main className="flex flex-1 flex-col gap-3 px-3 py-3">
         <section className="flex flex-col">
-          <div className="mb-1.5">
+          <div className="mb-1.5 text-center">
             <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
               Страховые продукты · B2C и B2B
             </h2>
@@ -104,7 +104,7 @@ function Dashboard() {
         <SalesTrend10d />
 
         <section className="flex flex-col">
-          <div className="mb-1.5">
+          <div className="mb-1.5 text-center">
             <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
               Страховые продукты · B2B
             </h2>
