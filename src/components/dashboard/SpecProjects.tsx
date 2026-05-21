@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, ChevronDown, Minus } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Minus } from "lucide-react";
 import { formatPct, toneFromChange } from "@/lib/format";
 
 type Kpi = {
