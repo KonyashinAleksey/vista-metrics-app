@@ -101,7 +101,7 @@ function Dashboard() {
           </div>
         </section>
 
-        <SalesTrend10d />
+        <B2CInsurance />
 
         <section className="flex flex-col">
           <div className="mb-1.5">
@@ -136,7 +136,7 @@ function Dashboard() {
 
         <SellersTrend metric={metrics.activeSellers} />
 
-        <B2CInsurance />
+        <SalesTrend10d />
 
         <SpecProjects />
 
