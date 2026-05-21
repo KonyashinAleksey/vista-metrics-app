@@ -47,26 +47,26 @@ function Dashboard() {
 
       <main className="flex flex-1 flex-col gap-3 px-3 py-3">
         <section className="flex flex-col">
-          <div className="mb-1.5 text-center">
+          <div className="mb-1.5">
             <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
               Страховые продукты · B2C и B2B
             </h2>
           </div>
           <section className="rounded-2xl border bg-card p-4">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+            <div className="text-left">
+              <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 <span className="h-1 w-1 rounded-full bg-ink" />
                 КД без НДС
               </div>
-              <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline justify-center gap-1.5">
+              <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline gap-1.5">
                 <span className="text-[40px]">4,12</span>
                 <span className="text-xl text-muted-foreground">млн ₽</span>
               </h1>
-              <div className="mt-1.5 flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
-                <span>-1d</span>
+              <div className="mt-1.5 flex items-center gap-2 text-[11px] text-muted-foreground">
                 <span className="inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-medium tabular bg-success/10 text-success">
                   +2.8%
                 </span>
+                <span>к пред. периоду</span>
               </div>
             </div>
           </section>
@@ -77,7 +77,7 @@ function Dashboard() {
               </h2>
             </div>
             <div className="grid grid-cols-2 gap-2">
-              <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-center">
+              <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-left">
                 <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">по месяцу</div>
                 <div className="mt-1 font-display text-ink leading-none tabular truncate">
                   <span className="text-lg">198,4</span>
@@ -87,7 +87,7 @@ function Dashboard() {
                   <span className="text-success">+4.2% к плану</span>
                 </div>
               </div>
-              <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-center">
+              <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-left">
                 <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">по году</div>
                 <div className="mt-1 font-display text-ink leading-none tabular truncate">
                   <span className="text-lg">2 312,7</span>
