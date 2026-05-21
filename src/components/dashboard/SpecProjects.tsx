@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, ChevronDown, Minus } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Minus } from "lucide-react";
 import { formatPct, toneFromChange } from "@/lib/format";
 
 type Kpi = {
@@ -160,18 +160,6 @@ export function SpecProjects() {
           ))}
         </div>
       </section>
-
-      <details className="group rounded-2xl border bg-card">
-        <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3">
-          <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
-            Данные за последние 10 дней
-          </h2>
-          <ChevronDown className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-180" />
-        </summary>
-        <div className="px-4 pb-4 text-[11px] text-muted-foreground">
-          Данные скрыты
-        </div>
-      </details>
     </section>
   );
 }
