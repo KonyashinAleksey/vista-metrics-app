@@ -18,6 +18,11 @@ const rrTiles = [
   { label: "по году", value: "462 840", unit: "шт", vsPlan: 8.3 },
 ];
 
+const rrActivationTiles = [
+  { label: "по месяцу", value: "25 260", unit: "шт", vsPlan: 5.2 },
+  { label: "по году", value: "303 120", unit: "шт", vsPlan: 3.1 },
+];
+
 function deltaPill(deltaPct: number) {
   const tone = toneFromChange(deltaPct);
   const Icon = tone === "positive" ? ArrowUpRight : tone === "negative" ? ArrowDownRight : Minus;
@@ -95,6 +100,18 @@ export function SpecProjects() {
         </div>
         <div className="grid grid-cols-2 gap-2">
           {rrTiles.map((t) => (
+            <RrTile key={t.label} label={t.label} value={t.value} unit={t.unit} vsPlan={t.vsPlan} />
+          ))}
+        </div>
+      </section>
+      <section className="flex flex-col">
+        <div className="mb-1.5">
+          <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            RR активации счетов
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {rrActivationTiles.map((t) => (
             <RrTile key={t.label} label={t.label} value={t.value} unit={t.unit} vsPlan={t.vsPlan} />
           ))}
         </div>
