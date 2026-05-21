@@ -1,5 +1,5 @@
 import { ArrowDownRight, ArrowUpRight, Minus } from "lucide-react";
-import { formatPct, formatValue, toneFromChange } from "@/lib/format";
+import { formatPct, toneFromChange } from "@/lib/format";
 
 type Kpi = {
   title: string;
@@ -52,6 +52,8 @@ function DriverTile({ label, value, unit, deltaPct }: { label: string; value: st
     </div>
   );
 }
+
+function deltaPill(deltaPct: number) {
   const tone = toneFromChange(deltaPct);
   const Icon = tone === "positive" ? ArrowUpRight : tone === "negative" ? ArrowDownRight : Minus;
   const cls =
@@ -132,6 +134,7 @@ export function SpecProjects() {
           ))}
         </div>
       </section>
+
       <section className="flex flex-col">
         <div className="mb-1.5">
           <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
@@ -144,7 +147,19 @@ export function SpecProjects() {
           ))}
         </div>
       </section>
+
+      <section className="flex flex-col">
+        <div className="mb-1.5">
+          <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            Драйверы
+          </h2>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          {driverTiles.map((t) => (
+            <DriverTile key={t.label} label={t.label} value={t.value} unit={t.unit} deltaPct={t.deltaPct} />
+          ))}
+        </div>
+      </section>
     </section>
   );
 }
-
