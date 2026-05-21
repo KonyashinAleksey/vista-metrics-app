@@ -84,7 +84,7 @@ function RrTile({ label, value, unit, vsPlan }: { label: string; value: string; 
   const tone = toneFromChange(vsPlan);
   const toneClass = tone === "positive" ? "text-success" : tone === "negative" ? "text-danger" : "text-muted-foreground";
   return (
-    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5">
+    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-center">
       <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">
         {label}
       </div>
