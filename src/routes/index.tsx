@@ -101,6 +101,8 @@ function Dashboard() {
           </div>
         </section>
 
+        <SalesTrend10d />
+
         <section className="flex flex-col">
           <div className="mb-1.5">
             <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
