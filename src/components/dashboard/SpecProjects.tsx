@@ -82,7 +82,7 @@ function RrTile({ label, value, unit, vsPlan }: { label: string; value: string; 
 export function SpecProjects() {
   return (
     <section className="flex flex-col gap-3">
-      <header className="flex items-end justify-center">
+      <header className="flex items-end justify-start">
         <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
           Спецпроекты
         </h2>
