@@ -39,7 +39,7 @@ export const b2c = {
   kpis: [
     {
       title: "КД без НДС",
-      value: "3,08",
+      value: "3.08",
       unit: "млн ₽",
       deltaPct: -12.4,
       deltaLabel: "к позавчера",
@@ -55,8 +55,8 @@ export const b2c = {
   rr: {
     title: "RR КД без НДС",
     tiles: [
-      { label: "по месяцу", value: "150,2", unit: "млн ₽", deltaPct: -45.1 },
-      { label: "по году", value: "1 760,1", unit: "млн ₽", deltaPct: -2.9 },
+      { label: "по месяцу", value: "150.2", unit: "млн ₽", deltaPct: -45.1 },
+      { label: "по году", value: "1 760.1", unit: "млн ₽", deltaPct: -2.9 },
     ] as B2CRrTile[],
   },
   segments: [
@@ -64,14 +64,14 @@ export const b2c = {
       title: "Новые продажи",
       rows: [
         { label: "Штуки", value: "18 412", unit: "шт", deltaPct: -7.2 },
-        { label: "ЧКД", value: "1,94", unit: "млн ₽", deltaPct: -11.3 },
+        { label: "ЧКД", value: "1.94", unit: "млн ₽", deltaPct: -11.3 },
       ],
     },
     {
       title: "Пролонгации",
       rows: [
         { label: "Штуки", value: "11 181", unit: "шт", deltaPct: 3.1 },
-        { label: "ЧКД", value: "1,14", unit: "млн ₽", deltaPct: -4.8 },
+        { label: "ЧКД", value: "1.14", unit: "млн ₽", deltaPct: -4.8 },
       ],
     },
   ] as B2CSegmentCard[],
