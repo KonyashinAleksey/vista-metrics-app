@@ -18,6 +18,11 @@ const rrTiles = [
   { label: "по году", value: "462 840", unit: "шт", vsPlan: 8.3 },
 ];
 
+const rrActivationTiles = [
+  { label: "по месяцу", value: "25 260", unit: "шт", vsPlan: 5.2 },
+  { label: "по году", value: "303 120", unit: "шт", vsPlan: 3.1 },
+];
+
 function deltaPill(deltaPct: number) {
   const tone = toneFromChange(deltaPct);
   const Icon = tone === "positive" ? ArrowUpRight : tone === "negative" ? ArrowDownRight : Minus;
