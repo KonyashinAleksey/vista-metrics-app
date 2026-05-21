@@ -136,8 +136,6 @@ function Dashboard() {
 
         <SellersTrend metric={metrics.activeSellers} />
 
-        <SalesTrend10d />
-
         <SpecProjects />
 
 
