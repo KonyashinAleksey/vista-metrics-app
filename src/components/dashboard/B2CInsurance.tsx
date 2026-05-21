@@ -18,7 +18,7 @@ function deltaPill(deltaPct: number) {
 export function B2CInsurance() {
   return (
     <section className="flex flex-col gap-3">
-      <header className="flex items-end justify-center">
+      <header className="flex items-end justify-start">
         <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
           Страховые продукты · B2C
         </h2>
@@ -93,11 +93,11 @@ function RrTile({ tile }: { tile: B2CRrTile }) {
   const toneClass =
     tone === "positive" ? "text-success" : tone === "negative" ? "text-danger" : "text-muted-foreground";
   return (
-    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-center">
+    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-left">
       <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">
         {tile.label}
       </div>
-      <div className="mt-1 font-display text-ink leading-none tabular truncate flex items-baseline justify-center gap-1">
+      <div className="mt-1 font-display text-ink leading-none tabular truncate flex items-baseline gap-1">
         <span className="text-lg">{tile.value}</span>
         <span className="text-[11px] text-muted-foreground">{tile.unit}</span>
       </div>
@@ -110,7 +110,7 @@ function RrTile({ tile }: { tile: B2CRrTile }) {
 
 function SegmentCard({ card }: { card: B2CSegmentCard }) {
   return (
-    <div className="rounded-2xl border bg-card p-2.5 text-center">
+    <div className="rounded-2xl border bg-card p-2.5 text-left">
       <div className="border-b hairline pb-1.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-ink">
         {card.title}
       </div>
@@ -118,7 +118,7 @@ function SegmentCard({ card }: { card: B2CSegmentCard }) {
         {card.rows.map((r) => {
           const { Icon, cls } = deltaPill(r.deltaPct);
           return (
-            <div key={r.label} className="flex flex-col items-center gap-0.5">
+            <div key={r.label} className="flex flex-col items-start gap-0.5">
               <span className="text-[10px] text-muted-foreground">{r.label}</span>
               <div className="flex items-baseline gap-1.5 min-w-0">
                 <span className="font-display text-[14px] tabular text-ink leading-none">

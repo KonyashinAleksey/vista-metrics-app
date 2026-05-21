@@ -51,7 +51,7 @@ export function RunRateCard({ metric, title }: { metric: MetricSnapshot; title: 
 
 function RrTile({ label, value, sub }: { label: string; value: string; sub?: React.ReactNode }) {
   return (
-    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-center">
+    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-left">
       <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">
         {label}
       </div>
