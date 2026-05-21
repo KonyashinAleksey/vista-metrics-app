@@ -110,7 +110,7 @@ function RrTile({ tile }: { tile: B2CRrTile }) {
 
 function SegmentCard({ card }: { card: B2CSegmentCard }) {
   return (
-    <div className="rounded-2xl border bg-card p-2.5 text-center">
+    <div className="rounded-2xl border bg-card p-2.5 text-left">
       <div className="border-b hairline pb-1.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-ink">
         {card.title}
       </div>
@@ -118,7 +118,7 @@ function SegmentCard({ card }: { card: B2CSegmentCard }) {
         {card.rows.map((r) => {
           const { Icon, cls } = deltaPill(r.deltaPct);
           return (
-            <div key={r.label} className="flex flex-col items-center gap-0.5">
+            <div key={r.label} className="flex flex-col items-start gap-0.5">
               <span className="text-[10px] text-muted-foreground">{r.label}</span>
               <div className="flex items-baseline gap-1.5 min-w-0">
                 <span className="font-display text-[14px] tabular text-ink leading-none">
