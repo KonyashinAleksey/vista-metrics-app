@@ -189,7 +189,6 @@ export function SpecProjects() {
               <tr className="text-left text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground">
                 <th className="py-2 pr-3 font-medium">Дата</th>
                 <th className="py-2 pr-3 font-medium">Открыто счетов</th>
-                <th className="py-2 pr-3 font-medium">Бенч</th>
                 <th className="py-2 pr-3 font-medium">Конверсия</th>
                 <th className="py-2 pr-3 font-medium">Кол-во Ш.Е.</th>
                 <th className="py-2 pr-3 font-medium">Счетов на Ш.Е.</th>
