@@ -1,5 +1,5 @@
 import { ArrowDownRight, ArrowUpRight, Minus } from "lucide-react";
-import { formatPct, toneFromChange } from "@/lib/format";
+import { formatPct, formatValue, toneFromChange } from "@/lib/format";
 
 type Kpi = {
   title: string;
@@ -13,6 +13,11 @@ const kpis: Kpi[] = [
   { title: "Активировано счетов", value: "842", unit: "шт", deltaPct: -3.4 },
 ];
 
+const rrTiles = [
+  { label: "по месяцу", value: "38 520", unit: "шт", vsPlan: 12.5 },
+  { label: "по году", value: "462 840", unit: "шт", vsPlan: 8.3 },
+];
+
 function deltaPill(deltaPct: number) {
   const tone = toneFromChange(deltaPct);
   const Icon = tone === "positive" ? ArrowUpRight : tone === "negative" ? ArrowDownRight : Minus;
@@ -23,6 +28,25 @@ function deltaPill(deltaPct: number) {
         ? "bg-success/10 text-success"
         : "bg-muted text-muted-foreground";
   return { Icon, cls };
+}
+
+function RrTile({ label, value, unit, vsPlan }: { label: string; value: string; unit: string; vsPlan: number }) {
+  const tone = toneFromChange(vsPlan);
+  const toneClass = tone === "positive" ? "text-success" : tone === "negative" ? "text-danger" : "text-muted-foreground";
+  return (
+    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5">
+      <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">
+        {label}
+      </div>
+      <div className="mt-1 font-display text-ink leading-none tabular truncate">
+        <span className="text-lg">{value}</span>
+        <span className="text-[11px] text-muted-foreground ml-1">{unit}</span>
+      </div>
+      <div className="mt-1 text-[10px] tabular truncate">
+        <span className={toneClass}>{formatPct(vsPlan)} к плану</span>
+      </div>
+    </div>
+  );
 }
 
 export function SpecProjects() {
@@ -62,6 +86,20 @@ export function SpecProjects() {
           })}
         </div>
       </section>
+
+      <section className="flex flex-col">
+        <div className="mb-1.5">
+          <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            RR открытие счетов
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {rrTiles.map((t) => (
+            <RrTile key={t.label} label={t.label} value={t.value} unit={t.unit} vsPlan={t.vsPlan} />
+          ))}
+        </div>
+      </section>
     </section>
   );
 }
+
