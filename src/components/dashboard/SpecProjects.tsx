@@ -24,7 +24,7 @@ const rrActivationTiles = [
 ];
 
 const driverTiles = [
-  { label: "Счетов на Ш.Е.", value: "6", unit: "", deltaPct: 0 },
+  { label: "Счетов на Ш.Е.", value: "6", unit: "", deltaPct: -2.9 },
   { label: "SLA минут", value: "10,6", unit: "", deltaPct: -5.2 },
   { label: "Конверсия", value: "57", unit: "%", deltaPct: 3.8 },
 ];
