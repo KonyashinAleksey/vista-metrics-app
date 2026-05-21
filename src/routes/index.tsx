@@ -79,6 +79,8 @@ function Dashboard() {
 
         <B2CInsurance />
 
+        <SpecProjects />
+
 
 
 
