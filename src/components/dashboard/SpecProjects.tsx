@@ -33,11 +33,11 @@ function DriverTile({ label, value, unit, deltaPct }: { label: string; value: st
   const tone = toneFromChange(deltaPct);
   const toneCls = tone === "positive" ? "text-success" : tone === "negative" ? "text-danger" : "text-muted-foreground";
   return (
-    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-center">
+    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-left">
       <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">
         {label}
       </div>
-      <div className="mt-1 font-display text-ink leading-none tabular truncate flex items-baseline justify-center gap-1">
+      <div className="mt-1 font-display text-ink leading-none tabular truncate flex items-baseline gap-1">
         <span className="text-lg">{value}</span>
         {unit && <span className="text-[11px] text-muted-foreground ml-1">{unit}</span>}
       </div>
