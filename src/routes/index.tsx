@@ -77,7 +77,7 @@ function Dashboard() {
               </h2>
             </div>
             <div className="grid grid-cols-2 gap-2">
-              <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5">
+              <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-center">
                 <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">по месяцу</div>
                 <div className="mt-1 font-display text-ink leading-none tabular truncate">
                   <span className="text-lg">198,4</span>
@@ -87,7 +87,7 @@ function Dashboard() {
                   <span className="text-success">+4.2% к плану</span>
                 </div>
               </div>
-              <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5">
+              <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5 text-center">
                 <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">по году</div>
                 <div className="mt-1 font-display text-ink leading-none tabular truncate">
                   <span className="text-lg">2 312,7</span>
