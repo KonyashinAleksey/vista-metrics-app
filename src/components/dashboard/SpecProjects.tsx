@@ -1,21 +1,6 @@
 import { ArrowDownRight, ArrowUpRight, ChevronDown, Minus } from "lucide-react";
 import { formatPct, toneFromChange } from "@/lib/format";
 
-const dailyRows: Array<[string, string, string, string, string, string]> = [
-  ["7-8 мая", "13", "68%", "1", "6,5", "15,8"],
-  ["10 мая", "8", "80%", "2", "4", "10,9"],
-  ["11 мая", "8", "53%", "2", "4", "8,4"],
-  ["12 мая", "5", "63%", "2", "3", "19,2"],
-  ["13 мая", "8", "50%", "2", "4", "13,9"],
-  ["14 мая", "13", "52%", "2", "7", "8,8"],
-  ["15 мая", "5", "42%", "1", "5", "10,8"],
-  ["16 мая", "25", "71%", "2", "13", "9,7"],
-  ["17 мая", "2", "33%", "2", "1", "9,8"],
-  ["18 мая", "14", "41%", "2", "7", "8,0"],
-  ["19 мая", "23", "59%", "2", "12", "8,0"],
-];
-const dailyTotal: [string, string, string, string, string, string] = ["ИТОГО", "124", "57%", "2", "6", "10,6"];
-
 type Kpi = {
   title: string;
   value: string;
