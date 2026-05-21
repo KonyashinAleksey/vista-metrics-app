@@ -23,7 +23,35 @@ const rrActivationTiles = [
   { label: "по году", value: "303 120", unit: "шт", vsPlan: 3.1 },
 ];
 
-function deltaPill(deltaPct: number) {
+const driverTiles = [
+  { label: "Счетов на Ш.Е.", value: "6", unit: "", deltaPct: 0 },
+  { label: "SLA минут", value: "10,6", unit: "", deltaPct: -5.2 },
+  { label: "Конверсия", value: "57", unit: "%", deltaPct: 3.8 },
+];
+
+function DriverTile({ label, value, unit, deltaPct }: { label: string; value: string; unit: string; deltaPct: number }) {
+  const tone = toneFromChange(deltaPct);
+  const Icon = tone === "positive" ? ArrowUpRight : tone === "negative" ? ArrowDownRight : Minus;
+  const toneCls = tone === "positive" ? "text-success" : tone === "negative" ? "text-danger" : "text-muted-foreground";
+  return (
+    <div className="min-w-0 rounded-xl border bg-card px-3 py-2.5">
+      <div className="text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground truncate">
+        {label}
+      </div>
+      <div className="mt-1 font-display text-ink leading-none tabular truncate">
+        <span className="text-lg">{value}</span>
+        {unit && <span className="text-[11px] text-muted-foreground ml-1">{unit}</span>}
+      </div>
+      <div className="mt-1 flex items-center gap-2 text-[10px] tabular text-muted-foreground">
+        <span>-1d</span>
+        <span className={`inline-flex items-center gap-0.5 font-medium ${toneCls}`}>
+          <Icon className="h-2.5 w-2.5" />
+          {formatPct(deltaPct)}
+        </span>
+      </div>
+    </div>
+  );
+}
   const tone = toneFromChange(deltaPct);
   const Icon = tone === "positive" ? ArrowUpRight : tone === "negative" ? ArrowDownRight : Minus;
   const cls =
