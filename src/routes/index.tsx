@@ -3,6 +3,7 @@ import { HeadlineKpi, RunRateCard } from "@/components/dashboard/HeadlineKpi";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { SellersTrend } from "@/components/dashboard/SellersTrend";
 import { B2CInsurance } from "@/components/dashboard/B2CInsurance";
+import { SpecProjects } from "@/components/dashboard/SpecProjects";
 import { metrics, meta } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/")({
@@ -77,6 +78,8 @@ function Dashboard() {
         <SellersTrend metric={metrics.activeSellers} />
 
         <B2CInsurance />
+
+        <SpecProjects />
 
 
 
