@@ -19,7 +19,7 @@ export function B2CInsurance() {
   return (
     <section className="flex flex-col gap-3">
       <header className="flex items-end justify-between">
-        <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
           Страховые продукты · B2C
         </h2>
       </header>
@@ -36,7 +36,7 @@ export function B2CInsurance() {
       {/* RR ЧКД — like B2B RunRateCard */}
       <section className="flex flex-col">
         <div className="mb-1.5">
-          <h3 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+          <h3 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
             {b2c.rr.title}
           </h3>
         </div>

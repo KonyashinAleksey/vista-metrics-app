@@ -47,7 +47,7 @@ function Dashboard() {
       <main className="flex flex-1 flex-col gap-3 px-3 py-3">
         <section className="flex flex-col">
           <div className="mb-1.5">
-            <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
               Страховые продукты · B2C и B2B
             </h2>
           </div>
@@ -71,7 +71,7 @@ function Dashboard() {
           </section>
           <div className="mt-3 flex flex-col">
             <div className="mb-1.5">
-              <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+              <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
                 RR КД без НДС
               </h2>
             </div>
@@ -102,7 +102,7 @@ function Dashboard() {
 
         <section className="flex flex-col">
           <div className="mb-1.5">
-            <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
               Страховые продукты · B2B
             </h2>
           </div>
@@ -120,7 +120,7 @@ function Dashboard() {
 
         <section className="flex flex-col">
           <div className="mb-1.5">
-            <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
               Драйверы
             </h2>
           </div>
