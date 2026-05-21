@@ -108,13 +108,13 @@ export function SpecProjects() {
                   <span className="text-base text-muted-foreground">{k.unit}</span>
                 </h1>
                 <div className="mt-1.5 flex items-center gap-2 text-[11px] text-muted-foreground">
-                  <span>к пред. периоду</span>
                   <span
                     className={`inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-medium tabular ${cls}`}
                   >
                     <Icon className="h-2.5 w-2.5" />
                     {formatPct(k.deltaPct)}
                   </span>
+                  <span>к пред. периоду</span>
                 </div>
               </div>
             );
