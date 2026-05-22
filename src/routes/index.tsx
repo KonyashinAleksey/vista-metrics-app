@@ -59,7 +59,7 @@ function Dashboard() {
                 <span className="ml-auto text-[9px] normal-case tracking-normal text-muted-foreground/60">за 1 день</span>
               </div>
               <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline gap-1.5 flex-wrap">
-                <span className="text-[40px]">4.12</span>
+                <span className="text-[40px]">14.12</span>
                 <span className="text-xl text-muted-foreground">млн ₽</span>
                 <span className="inline-flex items-baseline gap-1 text-[11px] text-muted-foreground font-sans ml-1">
                   <span className="inline-flex items-center rounded-full px-1.5 py-0.5 text-[10px] font-medium tabular bg-success/10 text-success">
