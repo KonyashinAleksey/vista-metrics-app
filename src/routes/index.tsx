@@ -48,7 +48,7 @@ function Dashboard() {
         <section className="flex flex-col">
           <div className="mb-1.5">
             <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
-              Страховые продукты · B2C и B2B за 19.05.26
+              Страховые продукты · B2C и B2B<span className="text-muted-foreground"> · за 19.05.26</span>
             </h2>
           </div>
           <section className="rounded-2xl border bg-card p-4">
@@ -106,7 +106,7 @@ function Dashboard() {
         <section className="flex flex-col">
           <div className="mb-1.5">
             <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
-              Страховые продукты · B2B за 19.05.26
+              Страховые продукты · B2B<span className="text-muted-foreground"> · за 19.05.26</span>
             </h2>
           </div>
           <HeadlineKpi
