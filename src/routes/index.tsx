@@ -73,7 +73,8 @@ function Dashboard() {
               <div className="text-left">
                 <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                   <span className="h-1 w-1 rounded-full bg-ink" />
-                  <span className="truncate">КД без НДС накопительно</span>
+                  <span className="truncate">КД без НДС</span>
+                  <span className="ml-auto text-[9px] normal-case tracking-normal text-muted-foreground/60 shrink-0">с начала месяца</span>
                 </div>
                 <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline gap-1.5">
                   <span className="text-[32px]">1 248.6</span>
