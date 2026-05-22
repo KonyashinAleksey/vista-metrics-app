@@ -4,6 +4,7 @@ import { MetricCard } from "@/components/dashboard/MetricCard";
 import { SellersTrend } from "@/components/dashboard/SellersTrend";
 import { B2CInsurance } from "@/components/dashboard/B2CInsurance";
 import { SpecProjects } from "@/components/dashboard/SpecProjects";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { metrics, meta } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/")({
