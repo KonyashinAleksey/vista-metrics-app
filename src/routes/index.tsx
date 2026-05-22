@@ -38,10 +38,13 @@ function Dashboard() {
               </div>
             </div>
           </div>
-          <span className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
-            Live
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
+              Live
+            </span>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
