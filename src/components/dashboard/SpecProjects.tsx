@@ -84,7 +84,7 @@ export function SpecProjects() {
     <section className="flex flex-col gap-3">
       <header className="flex items-end justify-start">
         <h2 className="text-[10px] font-medium uppercase tracking-[0.12em] text-foreground">
-          Спецпроекты за 19.05.26
+          Спецпроекты<span className="text-muted-foreground"> · за 19.05.26</span>
         </h2>
       </header>
 
