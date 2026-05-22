@@ -52,23 +52,40 @@ function Dashboard() {
             </h2>
           </div>
           <section className="rounded-2xl border bg-card p-4">
-            <div className="text-left">
-              <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                <span className="h-1 w-1 rounded-full bg-ink" />
-                КД без НДС
-                <span className="ml-auto text-[9px] normal-case tracking-normal text-muted-foreground/60">за 1 день</span>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="text-left">
+                <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                  <span className="h-1 w-1 rounded-full bg-ink" />
+                  <span className="truncate">КД без НДС</span>
+                  <span className="ml-auto text-[9px] normal-case tracking-normal text-muted-foreground/60 shrink-0">за 1 день</span>
+                </div>
+                <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline gap-1.5">
+                  <span className="text-[32px]">14.12</span>
+                  <span className="text-base text-muted-foreground">млн ₽</span>
+                </h1>
+                <div className="mt-1.5 flex items-center gap-2 text-[11px] text-muted-foreground">
+                  <span>-1d</span>
+                  <span className="inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-medium tabular bg-success/10 text-success">
+                    +2.8%
+                  </span>
+                </div>
               </div>
-              <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline gap-1.5 flex-wrap">
-                <span className="text-[40px]">14.12</span>
-                <span className="text-xl text-muted-foreground">млн ₽</span>
-              </h1>
-              <div className="mt-1.5 flex items-center gap-2 text-[11px] text-muted-foreground">
-                <span>-1d</span>
-                <span className="inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-medium tabular bg-success/10 text-success">
-                  +2.8%
-                </span>
+              <div className="text-left">
+                <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                  <span className="h-1 w-1 rounded-full bg-ink" />
+                  <span className="truncate">КД без НДС накопительно</span>
+                </div>
+                <h1 className="mt-1.5 font-display leading-[1] text-ink tabular flex items-baseline gap-1.5">
+                  <span className="text-[32px]">1 248.6</span>
+                  <span className="text-base text-muted-foreground">млн ₽</span>
+                </h1>
+                <div className="mt-1.5 flex items-center gap-2 text-[11px] text-muted-foreground">
+                  <span>YTD</span>
+                  <span className="inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-medium tabular bg-success/10 text-success">
+                    +12.4%
+                  </span>
+                </div>
               </div>
-
             </div>
           </section>
           <div className="mt-3 flex flex-col">
